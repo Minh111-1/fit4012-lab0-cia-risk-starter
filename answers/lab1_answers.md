@@ -1,62 +1,52 @@
 # Lab 01 Answers
 ## CIA & Risk: Hệ thống lưu điểm
 
-**Họ và tên:** Đinh Quang Minh  
-**MSSV:** 1871020392  
-**Lớp/Nhóm:** CNTT 18-01  
+**Họ và tên:** Đinh Quang Minh
+
+**MSSV:** 1871020392
+
+**Lớp/Nhóm:** CNTT 18-01
 
 ---
 
 ## 1. Assets
 Liệt kê ít nhất 2 assets cần bảo vệ.
 
-- Asset 1: Student Grade Database
-  - Description: Contains all student grades and academic records
-  - Importance: High
-
-- Asset 2: User Accounts
-  - Description: Accounts for lecturers and students to access the system
-  - Importance: High
-
-- Asset 3: System Logs
-  - Description: Records all system activities and grade changes
-  - Importance: Medium
+- Asset 1: Database
+- Asset 2: Application Source Code
+- Asset 3 (nếu có): Web Server
 
 ---
 
 ## 2. Mapping CIA
+Ghép từng sự cố với CIA.
 
-- Incident A:
-  - Confidentiality: Low
-  - Integrity: Low
-  - Availability: High
-
-- Incident B:
-  - Confidentiality: Low
-  - Integrity: High
-  - Availability: Medium
-
-- Incident C:
-  - Confidentiality: High
-  - Integrity: Low
-  - Availability: Low
+- Sự cố A -> Rò rỉ dữ liệu: Hacker đánh cắp mật khẩu, xem trộm hồ sơ khách hàng, công bố thông tin nội bộ. -> Confidentiality
+- Sự cố B -> Sai lệch dữ liệu: Hacker thay đổi số dư tài khoản, sửa nội dung bài viết, thay đổi mã nguồn phần mềm. -> Integrity
+- Sự cố C -> Tấn công hệ thống: Tấn công DDoS làm sập web, máy chủ bị rút điện, mạng bị nghẽn không thể truy cập. -> Availability
 
 ---
 
 ## 3. Phân tích sự cố B
-
-- Threat: Unauthorized user or insider modifies grades without permission  
-- Vulnerability: Weak access control, lack of monitoring logs, no multi-factor authentication  
-- Mitigation: Enable MFA, enforce role-based access control, log all grade changes, require approval for modifications  
+- Threat: Hành động "Hacker thay đổi số dư" hay "sửa mã nguồn" chính là các mối đe dọa từ con người.
+- Vulnerability: Việc hacker có thể "sửa nội dung bài viết" thường là do hệ thống bị lỗi phân quyền hoặc lỗi Broken Access Control.
+- Mitigation: Giải pháp dùng Digital Signature (Chữ ký số) hoặc Hash (Mã băm) là cách tốt nhất để bảo vệ "mã nguồn phần mềm" không bị thay đổi trái phép.
 
 ---
 
 ## 4. Reflection
+Viết 5-7 dòng.
+- Hiểu rõ bộ ba nguyên tắc CIA: Bảo mật, Toàn vẹn và Sẵn sàng.
+- Nhận thức được tầm quan trọng của việc xác định đúng tài sản (Assets).
+- Biết cách phân loại các mối đe dọa (Threats) phổ biến hiện nay.
+- Tự xác định được các lỗ hổng (Vulnerabilities) thường gặp trong hệ thống.
+- Học được các biện pháp giảm nhẹ (Mitigation) như phân quyền và mã hóa.
+- Nâng cao ý thức bảo mật khi thiết kế và vận hành các ứng dụng phần mềm.
+- Đây là nền tảng quan trọng giúp em xây dựng các hệ thống an toàn hơn.
 
-If I were an administrator, I would prioritize Incident B because unauthorized grade modification directly affects students' outcomes and system trust. Incident A is temporary and can be resolved quickly. Incident C should be investigated in parallel. Ensuring strict control over grade modification and maintaining logs is critical.
 
 ---
 
 ## 5. Bonus Flag
+`FIT4012{A-C-B-I-C-A}`
 
-`FIT4012{A-A-B-I-C-C}`
