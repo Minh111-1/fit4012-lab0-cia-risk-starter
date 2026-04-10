@@ -1,8 +1,8 @@
 # Lab 01 Answers
 ## CIA & Risk: Hệ thống lưu điểm
 
-**Họ và tên:** Đinh Quang Minh
-**MSSV:** 1871020392 
+**Họ và tên:** Đinh Quang Minh  
+**MSSV:** 1871020392  
 **Lớp/Nhóm:** CNTT 18-01  
 
 ---
@@ -10,32 +10,50 @@
 ## 1. Assets
 Liệt kê ít nhất 2 assets cần bảo vệ.
 
-- Bảng điểm sinh viên
-- Tài khoản đăng nhập (giảng viên/sinh viên)
-- Cơ sở dữ liệu điểm
-- Log thay đổi điểm
+- Asset 1: Student Grade Database
+  - Description: Contains all student grades and academic records
+  - Importance: High
+
+- Asset 2: User Accounts
+  - Description: Accounts for lecturers and students to access the system
+  - Importance: High
+
+- Asset 3: System Logs
+  - Description: Records all system activities and grade changes
+  - Importance: Medium
 
 ---
 
 ## 2. Mapping CIA
 
-- Sự cố A → Availability (hệ thống không đăng nhập được = không sẵn sàng)
-- Sự cố B → Integrity (điểm bị sửa trái phép = mất toàn vẹn)
-- Sự cố C → Confidentiality (danh sách điểm bị lộ = mất bí mật)
+- Incident A:
+  - Confidentiality: Low
+  - Integrity: Low
+  - Availability: High
+
+- Incident B:
+  - Confidentiality: Low
+  - Integrity: High
+  - Availability: Medium
+
+- Incident C:
+  - Confidentiality: High
+  - Integrity: Low
+  - Availability: Low
 
 ---
 
 ## 3. Phân tích sự cố B
 
-- Threat: Người dùng trái phép hoặc nội bộ sửa điểm không đúng thẩm quyền  
-- Vulnerability: Phân quyền chưa chặt, không có log theo dõi, thiếu xác thực 2 lớp (MFA)  
-- Mitigation: Bật MFA, phân quyền rõ theo vai trò, ghi log mọi thao tác sửa điểm, yêu cầu phê duyệt khi thay đổi điểm  
+- Threat: Unauthorized user or insider modifies grades without permission  
+- Vulnerability: Weak access control, lack of monitoring logs, no multi-factor authentication  
+- Mitigation: Enable MFA, enforce role-based access control, log all grade changes, require approval for modifications  
 
 ---
 
 ## 4. Reflection
 
-Nếu là quản trị viên, em sẽ ưu tiên xử lý sự cố B trước vì điểm bị sửa sai ảnh hưởng trực tiếp đến quyền lợi sinh viên và tính tin cậy của hệ thống. Sự cố A chỉ là gián đoạn tạm thời, có thể khắc phục nhanh. Sự cố C đã xảy ra rồi nên cần điều tra song song. Việc kiểm soát chặt quyền sửa điểm và có log đầy đủ là ưu tiên hàng đầu.
+If I were an administrator, I would prioritize Incident B because unauthorized grade modification directly affects students' outcomes and system trust. Incident A is temporary and can be resolved quickly. Incident C should be investigated in parallel. Ensuring strict control over grade modification and maintaining logs is critical.
 
 ---
 
